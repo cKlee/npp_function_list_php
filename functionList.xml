@@ -1,0 +1,33 @@
+            <parser id="php_function" displayName="PHP" commentExpr="((/\*.*?\*)/|(//.*?$))|(\#.*?$)">
+                <classRange
+                    mainExpr="^[\s]*(class|abstract[\s]+class|final[\s]+class)[\t\s]+[\w]+([\s]*|[\s]*(extends|implements)[\t\s]+[^\{]+[\s]*)+\{"
+                    mainExpr_save="^[\s]*(class|abstract[\s]+class|final[\s]+class)[\t ]+[\w]+([\s]*|[\s]*(extends|implements)[\s]+[\w\\]+[\s]*)+([\s]*|[\s]*(extends|implements)[\s]+[\w\\]+[\s]*)?\{"
+                    openSymbole = "\s\{"
+                    closeSymbole = "\s\}"
+                    displayMode="node">
+                    <className>
+                        <nameExpr expr="(class|abstract[\s]+class|final[\s]+class)[\s]+[\w]+"/>
+                        <nameExpr expr="[\s]+[\w]+\Z"/>
+                        <nameExpr expr="[\w]+\Z"/>
+                    </className>
+                    <function
+                        mainExpr="^[\s]*((static|public|protected|private|final)*(\s+(static|public|protected|private|final))+[\s]+)?(function[\s]+)+([\w]+([\s]+[\w]+)?([\s]+|\*[\s]+|[\s]+\*|[\s]+\*[\s]+))?([\w_]+[\s]*::)?(?!(if|while|for|switch))[\w_~]+[\s]*\([^\{]*\{">
+                        <functionName>
+                            <funcNameExpr expr="(?!(if|while|for|switch))[\w_]+[\s]*\([^\{]*"/>
+                            <!-- comment below node if want display method with parmas 
+                            <funcNameExpr expr="(?!(if|while|for|switch))[\w_]+"/> -->
+                        </functionName>
+                    </function>
+                </classRange>
+                <function
+                    mainExpr="^[\s]*function[\s]+\w+\("
+                    displayMode="$className->$functionName">
+                    <functionName>
+                        <nameExpr expr="(?!(if|while|for))[\w_]+[\s]*\("/>
+                        <nameExpr expr="(?!(if|while|for))[\w_]+"/>
+                    </functionName>
+                    <className>
+                        <nameExpr expr="[\w_]+(?=[\s]*::)"/>
+                    </className>
+                </function>
+            </parser>
