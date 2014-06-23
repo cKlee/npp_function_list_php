@@ -1,12 +1,12 @@
             <parser id="php_function" displayName="PHP" commentExpr="((/\*.*?\*)/|(//.*?$))|(\#.*?$)">
                 <classRange
-                    mainExpr="^[\s]*(class|abstract[\s]+class|final[\s]+class)[\t\s]+[\w]+([\s]*|[\s]*(extends|implements)[\t\s]+[^\{]+[\s]*)+\{"
+                    mainExpr="^[\s]*(class|abstract[\s]+class|final[\s]+class|interface)[\t\s]+[\w]+([\s]*|[\s]*(extends|implements)[\t\s]+[^\{]+[\s]*)+\{"
                     mainExpr_save="^[\s]*(class|abstract[\s]+class|final[\s]+class)[\t ]+[\w]+([\s]*|[\s]*(extends|implements)[\s]+[\w\\]+[\s]*)+([\s]*|[\s]*(extends|implements)[\s]+[\w\\]+[\s]*)?\{"
                     openSymbole = "\s\{"
                     closeSymbole = "\s\}"
                     displayMode="node">
                     <className>
-                        <nameExpr expr="(class|abstract[\s]+class|final[\s]+class)[\s]+[\w]+"/>
+                        <nameExpr expr="(class|abstract[\s]+class|final[\s]+class|interface)[\s]+[\w]+"/>
                         <nameExpr expr="[\s]+[\w]+\Z"/>
                         <nameExpr expr="[\w]+\Z"/>
                     </className>
